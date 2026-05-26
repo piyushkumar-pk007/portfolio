@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Piyush Kumar portfolio — Data Scientist focused on supply chain analytics, forecasting, optimization, MLOps, and GenAI."
+    />
+    <meta name="theme-color" content="#09090b" />
+    <title>Piyush Kumar | Data Scientist</title>
+    <script>
+      (() => {
+        const savedTheme = localStorage.getItem('theme')
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light')
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
