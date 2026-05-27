@@ -13,7 +13,7 @@ const contactMethods = [
 
 function Contact() {
   return (
-    <section id="contact" className="section-shell">
+    <section id="contact" className="section-shell bg-[color-mix(in_srgb,var(--accent-rose)_3%,transparent)]">
       <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow={siteCopy.contactHeading}
@@ -37,15 +37,23 @@ function Contact() {
                   href={method.href}
                   target={method.href.startsWith('http') ? '_blank' : undefined}
                   rel={method.href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="flex items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-[var(--text-secondary)] transition hover:border-[var(--accent)] hover:text-[var(--text-primary)]"
+                  className="flex items-center justify-center gap-3 rounded-2xl border px-5 py-4 text-[var(--text-secondary)] transition hover:-translate-y-0.5 hover:border-[var(--accent-rose)] hover:text-[var(--text-primary)]"
                   style={{ borderColor: 'var(--border)' }}
                 >
-                  <Icon size={18} className="text-[var(--accent)]" />
+                  <Icon size={18} className="text-[var(--accent-rose)]" />
                   <span>{method.label}</span>
                 </a>
               )
             })}
           </div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="button-accent mt-8 px-6 py-3.5 text-base"
+            style={{ '--button-accent': 'var(--accent-rose)' }}
+          >
+            <Mail size={18} />
+            <span>{siteCopy.contactCtaLabel}</span>
+          </a>
         </motion.div>
       </FadeInSection>
     </section>

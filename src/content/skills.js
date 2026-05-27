@@ -61,4 +61,28 @@ export const skillGroups = [
       'SAP IBP / o9 / Kinaxis (awareness)',
     ],
   },
+  {
+    category: 'Web & Full Stack',
+    items: [
+      'React.js',
+      'Node.js',
+      'Express.js',
+      'MongoDB (NoSQL)',
+      'Redis',
+      'REST APIs',
+      'HTML · CSS · JavaScript',
+      'Streamlit',
+    ],
+  },
+  {
+    category: 'Collaboration & Leadership',
+    items: [
+      'Cross-functional Stakeholder Communication',
+      'S&OP Meeting Facilitation',
+      'Translating Analytics to Business Decisions',
+      'Presentation & Data Storytelling',
+      'Agile / Scrum Workflows',
+      'Mentoring & Knowledge Transfer',
+    ],
+  },
 ]

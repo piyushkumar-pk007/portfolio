@@ -6,8 +6,8 @@ import FadeInSection from './FadeInSection'
 import SectionHeading from './SectionHeading'
 
 const groups = [
-  { title: siteCopy.competitionsLabel, items: achievements.competitions, icon: Award },
-  { title: siteCopy.certificationsLabel, items: achievements.certifications, icon: BadgeCheck },
+  { title: siteCopy.competitionsLabel, items: achievements.competitions, icon: Award, color: 'var(--accent-amber)' },
+  { title: siteCopy.certificationsLabel, items: achievements.certifications, icon: BadgeCheck, color: 'var(--accent-emerald)' },
 ]
 
 function Achievements() {
@@ -28,7 +28,13 @@ function Achievements() {
                 className="surface-card p-7"
               >
                 <div className="flex items-center gap-3">
-                  <div className="rounded-2xl bg-[var(--accent-soft)] p-3 text-[var(--accent)]">
+                  <div
+                    className="rounded-2xl p-3"
+                    style={{
+                      background: `color-mix(in srgb, ${group.color} 16%, transparent)`,
+                      color: group.color,
+                    }}
+                  >
                     <Icon size={20} />
                   </div>
                   <h3 className="text-xl font-semibold tracking-[-0.02em] text-[var(--text-primary)]">
@@ -38,7 +44,7 @@ function Achievements() {
                 <ul className="mt-6 space-y-4 text-[var(--text-secondary)]">
                   {group.items.map((item) => (
                     <li key={item} className="flex gap-3 leading-relaxed">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-[var(--accent)]" />
+                      <span className="mt-2 h-2 w-2 rounded-full" style={{ background: group.color }} />
                       <span>{item}</span>
                     </li>
                   ))}

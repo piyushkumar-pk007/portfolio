@@ -1,6 +1,7 @@
 import { FolderGit2, Link2, Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { profile, siteCopy } from '../content/profile'
+import Avatar from './Avatar'
 import FadeInSection from './FadeInSection'
 import SectionHeading from './SectionHeading'
 
@@ -14,7 +15,7 @@ const contactLinks = [
 
 function About() {
   return (
-    <section id="about" className="section-shell">
+    <section id="about" className="section-shell bg-[color-mix(in_srgb,var(--accent-emerald)_4%,transparent)]">
       <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow={siteCopy.aboutHeading}
@@ -28,9 +29,12 @@ function About() {
           transition={{ duration: 0.45 }}
           className="surface-card grid gap-8 p-8 lg:grid-cols-[1.3fr_0.7fr]"
         >
-          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-            {profile.summary}
-          </p>
+          <div className="flex flex-col gap-6">
+            <Avatar sizeClassName="h-24 w-24" />
+            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+              {profile.summary}
+            </p>
+          </div>
           <div className="grid gap-4">
             {contactLinks.map((item) => {
               const Icon = item.icon

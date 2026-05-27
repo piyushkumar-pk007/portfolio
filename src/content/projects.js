@@ -4,6 +4,7 @@ export const projects = [
     name: 'Integrated Demand-Supply Intelligence Platform',
     shortName: 'ProcureIQ',
     tagline: 'Procurement, forecasting & optimization engine for manufacturing',
+    thumbnailGradient: 'from-blue-600 via-violet-600 to-indigo-800',
     role: 'Sole builder',
     duration: '2025',
     cardSummary:
@@ -108,6 +109,7 @@ export const projects = [
     name: 'Network-Level S&OP Decision Engine',
     shortName: 'SOPNet',
     tagline: 'Hierarchical forecasting, MILP planning, and discrete-event simulation',
+    thumbnailGradient: 'from-emerald-600 via-teal-600 to-cyan-800',
     role: 'Sole builder',
     duration: '2025',
     cardSummary:

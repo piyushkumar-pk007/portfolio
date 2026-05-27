@@ -3,6 +3,7 @@ import { ArrowDownRight } from 'lucide-react'
 import AnimatedCount from './AnimatedCount'
 import { profile, siteCopy } from '../content/profile'
 import { useTypewriter } from '../hooks/useTypewriter'
+import Avatar from './Avatar'
 import ResumeButton from './ResumeButton'
 
 function Hero() {
@@ -71,10 +72,21 @@ function Hero() {
             <motion.p variants={itemVariants} className="mb-4 mt-0 text-sm font-medium uppercase tracking-[0.24em] text-[var(--accent)]">
               {siteCopy.heroRolePrefix} <span className="text-[var(--text-primary)]">{typedRole}</span><span className="type-cursor" />
             </motion.p>
+            <motion.div variants={itemVariants} className="mt-8">
+              <Avatar />
+            </motion.div>
             <motion.h1 variants={itemVariants} className="max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-[var(--text-primary)] sm:text-6xl xl:text-7xl">
               {profile.name}
             </motion.h1>
             <motion.p variants={itemVariants} className="mt-5 max-w-3xl text-xl text-[var(--text-secondary)]">{profile.tagline}</motion.p>
+            {profile.availableForWork ? (
+              <motion.div variants={itemVariants} className="mt-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+                  Open to opportunities
+                </span>
+              </motion.div>
+            ) : null}
             <motion.p variants={itemVariants} className="mt-6 max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
               {siteCopy.heroIntro}
             </motion.p>
@@ -98,6 +110,13 @@ function Hero() {
               <p className="font-mono text-sm uppercase tracking-[0.28em] text-[var(--text-muted)]">
                 {siteCopy.heroSnapshotLabel}
               </p>
+              <div className="mt-6 flex flex-col items-center text-center">
+                <Avatar sizeClassName="h-24 w-24" />
+                <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[var(--text-primary)]">
+                  {profile.name}
+                </p>
+                <p className="mt-1 text-sm text-[var(--text-secondary)]">{profile.title}</p>
+              </div>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {profile.heroStats.map((stat, index) => (
                   <div
@@ -115,6 +134,33 @@ function Hero() {
             </div>
           </motion.div>
         </motion.div>
+      </div>
+
+      <div className="pointer-events-none absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-[var(--text-primary)] opacity-[0.06] xl:block">
+        <svg width="320" height="92" viewBox="0 0 320 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="hero-flow-arrow" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+              <path d="M0 0L8 4L0 8V0Z" fill="currentColor" />
+            </marker>
+          </defs>
+          <g stroke="currentColor" strokeWidth="1.8" strokeDasharray="4 4" markerEnd="url(#hero-flow-arrow)">
+            <line x1="50" y1="40" x2="118" y2="40" />
+            <line x1="130" y1="40" x2="198" y2="40" />
+            <line x1="210" y1="40" x2="278" y2="40" />
+          </g>
+          <g fill="currentColor">
+            <circle cx="34" cy="40" r="10" />
+            <circle cx="114" cy="40" r="10" />
+            <circle cx="194" cy="40" r="10" />
+            <circle cx="274" cy="40" r="10" />
+          </g>
+          <g fontFamily="JetBrains Mono, monospace" fontSize="11" fill="currentColor" textAnchor="middle">
+            <text x="34" y="76">Supplier</text>
+            <text x="114" y="76">Plant</text>
+            <text x="194" y="76">DC</text>
+            <text x="274" y="76">Retailer</text>
+          </g>
+        </svg>
       </div>
     </section>
   )

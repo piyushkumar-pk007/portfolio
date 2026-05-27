@@ -2,9 +2,11 @@ export const profile = {
   name: 'Piyush Kumar',
   title: 'Data Scientist · Supply Chain Analytics',
   tagline: 'ML | MLOps | GenAI · 4+ Years',
-  heroRoles: ['Data Scientist', 'Supply Chain Analyst', 'ML Engineer'],
+  avatarUrl: '/images/avatar.jpg',
+  availableForWork: true,
+  heroRoles: ['Data Scientist', 'Supply Chain Analyst', 'ML Engineer', 'AI-ML Engineer'],
   summary:
-    'Data Scientist with 4+ years delivering supply chain analytics across manufacturing and e-commerce — specializing in time-series forecasting, optimization, simulation, and supplier risk modeling aligned to S&OP, procurement, and inventory decisions.',
+    'Data Scientist with 4+ years and ₹1 Cr+ in documented savings — embedded with supply chain teams at Jayanita Exports and Laysan Technologies to turn messy operational data into forecasts, procurement decisions, and inventory plans that actually get used. Forecast MAPE as low as 4.8%. Inventory holding cut by 18%. 24+ competitions entered.',
   location: 'Greater Noida, India',
   email: 'piyushkumar.aspk@gmail.com',
   phone: '+91 96081 46506',
@@ -33,7 +35,7 @@ export const siteCopy = {
   aboutHeading: 'About',
   aboutTitle: 'Analytics for decisions, not dashboards alone.',
   aboutBody:
-    'I work at the overlap of machine learning, operations research, and supply chain planning. My focus is turning noisy operational data into demand signals, supplier insights, and planning recommendations that can actually be acted on by procurement and S&OP teams.',
+    "I've spent 4+ years sitting inside supply chain teams — not just handing over models, but joining S&OP calls, understanding why a 3% forecast error costs real money, and making sure my outputs change how planners actually place orders. At Jayanita Exports I cut supplier costs by 8% and reduced inventory holding by 18%. At Laysan Technologies I brought forecast MAPE down to 4.8% across 500+ SKUs. I've competed in 24+ data science competitions, built ML pipelines on AWS and OCI, and shipped full Streamlit dashboards that procurement teams use every week. I bring Python and SQL to the data layer, MILP and SimPy to the planning layer, and plain English to the boardroom — that combination is what turns a good model into a decision that actually gets made.",
   skillsHeading: 'Skills',
   skillsTitle: 'A toolkit shaped by planning and execution.',
   experienceHeading: 'Experience',
