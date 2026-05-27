@@ -1,3 +1,6 @@
+import procureiqStoryMarkdown from '../../procureiq.md?raw'
+import sopnetStoryMarkdown from '../../sopnet.md?raw'
+
 export const projects = [
   {
     slug: 'procureiq',
@@ -96,9 +99,40 @@ export const projects = [
       { metric: 'Inventory holding cut', value: '18%', progress: 0.86, benchmarkLabel: 'Planning benchmark' },
       { metric: 'Forecast MAPE', value: '4.8%', progress: 0.78, benchmarkLabel: 'Accuracy confidence' },
     ],
+    plainEnglish: {
+      eyebrow: 'My take',
+      title: 'How I think about ProcureIQ',
+      description:
+        'If I had to explain this project quickly, this is how I would frame it.',
+      summary:
+        'I built ProcureIQ to close the gap between a forecast and an actual buying decision.',
+      cards: [
+        {
+          title: 'The real job here',
+          text:
+            'The project looks at past demand, pricing, and supplier behavior, then turns that into a suggested procurement plan instead of stopping at charts or model scores.',
+        },
+        {
+          title: 'Why that matters',
+          text:
+            'In procurement, small mistakes show up quickly. Buy too much and cash gets stuck in inventory. Buy too little and service suffers. Pick the wrong supplier and delays become everyone else’s problem.',
+        },
+        {
+          title: 'Simple example',
+          text:
+            'Say a factory needs steel, packaging, and chemicals for next month. A buyer cannot just ask who is cheapest. They also need to know how much material will be needed, which supplier is likely to delay, and how to place orders without overstocking. That is the kind of decision this project is trying to support.',
+        },
+        {
+          title: 'How I read the output',
+          text:
+            'The output tells me the logic is stronger than a cheapest-supplier-only approach. I would not treat the savings as a business promise, but I would treat the planning approach as directionally better.',
+        },
+      ],
+    },
+    storyMarkdown: procureiqStoryMarkdown,
     honestyNote:
-      'The business logic is inspired by my real supply-chain analytics work at Jayanita Exports. The GitHub implementation uses public Kaggle shipment-pricing data so the code can be shared openly without exposing company data.',
-    repoUrl: 'https://github.com/piyush-kumar/procureiq',
+      'This is an independent project I built on my own using public Kaggle data. It is not a company project, and it does not use any private business data. The ideas come from real supply-chain problems, but the implementation here is a personal prototype made for learning, experimentation, and showing how I think through procurement decisions.',
+    repoUrl: 'https://github.com/piyushkumar-pk007/ProcureIQ-Integrated-Demand-Supply-Intelligence-Platform',
   },
   {
     slug: 'sopnet',
@@ -209,9 +243,40 @@ export const projects = [
       { metric: 'Simulation replications', value: '100+', progress: 0.88, benchmarkLabel: 'Stress-test depth' },
       { metric: 'Scenarios stress-tested', value: '6', progress: 0.7, benchmarkLabel: 'Scenario breadth' },
     ],
+    plainEnglish: {
+      eyebrow: 'My take',
+      title: 'How I think about SOPNet',
+      description:
+        'If I had to explain this project quickly, this is the version I would use.',
+      summary:
+        'I built SOPNet to show that forecasting is only one part of planning; the harder part is deciding how the network should respond.',
+      cards: [
+        {
+          title: 'The real job here',
+          text:
+            'The project connects forecast output with production, inventory, shipment, and service decisions across a multi-node supply chain.',
+        },
+        {
+          title: 'Why that matters',
+          text:
+            'A good forecast does not automatically create a good plan. Teams still have to decide what to make, where to send it, and how much risk they are willing to carry.',
+        },
+        {
+          title: 'Simple example',
+          text:
+            'Imagine three factories and five warehouses serving many stores. If demand rises in one region, the team has to decide which factory should produce more, which warehouse should receive it, and how to move stock without creating shortages somewhere else. That is the kind of network decision this project is built to handle.',
+        },
+        {
+          title: 'How I read the output',
+          text:
+            'The optimized plan looked better than the simpler baselines, and the simulation helped me check whether that plan still holds up once uncertainty is introduced.',
+        },
+      ],
+    },
+    storyMarkdown: sopnetStoryMarkdown,
     honestyNote:
-      'Independent public-data prototype. Not a paid client project. Uses Kaggle M5 demand data with a synthetic plant–DC–retail network. The OCI deployment is architecture-level, designed to demonstrate readiness rather than a live production deployment.',
-    repoUrl: 'https://github.com/piyush-kumar/sopnet',
+      'This is also an independent project built by me using public M5 demand data and a synthetic supply network. It is not based on a company’s live planning system. I created it to show how forecasting, planning, optimization, and simulation can work together in one flow, using assumptions that are clear and safe to share publicly.',
+    repoUrl: 'https://github.com/piyushkumar-pk007/SOPNet-Network-Level-S-OP-Decision-Engine',
   },
 ]
 
@@ -219,15 +284,13 @@ export const projectPageCopy = {
   challengeLabel: 'The challenge',
   architectureLabel: 'Architecture',
   architectureTitle: 'A connected pipeline from raw signal to action.',
-  modulesLabel: 'Modules',
-  modulesTitle: 'How the system is broken down in code.',
   impactLabel: 'Impact',
   impactTitle: 'Signal, scale, and decision value.',
   stackLabel: 'Tech stack',
   stackTitle: 'Tools grouped by the role they play.',
   stackDistributionLabel: 'Stack distribution',
-honestyLabel: 'Honest framing note',
-  sectionRail: ['Problem', 'Architecture', 'Modules', 'Impact', 'Tech'],
+  honestyLabel: 'Honest framing note',
+  sectionRail: ['Story', 'Problem', 'Architecture', 'Impact', 'Tech'],
   repoLabel: 'View repository',
   scrollLabel: 'Scroll to details',
 }
