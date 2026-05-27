@@ -1,7 +1,6 @@
 import { FolderGit2, Link2, Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { profile, siteCopy } from '../content/profile'
-import Avatar from './Avatar'
 import FadeInSection from './FadeInSection'
 import SectionHeading from './SectionHeading'
 
@@ -20,7 +19,6 @@ function About() {
         <SectionHeading
           eyebrow={siteCopy.aboutHeading}
           title={siteCopy.aboutTitle}
-          description={siteCopy.aboutBody}
         />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -29,12 +27,9 @@ function About() {
           transition={{ duration: 0.45 }}
           className="surface-card grid gap-8 p-8 lg:grid-cols-[1.3fr_0.7fr]"
         >
-          <div className="flex flex-col gap-6">
-            <Avatar sizeClassName="h-24 w-24" />
-            <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
-              {profile.summary}
-            </p>
-          </div>
+          <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
+            {siteCopy.aboutBody}
+          </p>
           <div className="grid gap-4">
             {contactLinks.map((item) => {
               const Icon = item.icon

@@ -96,10 +96,6 @@ export const projects = [
       { metric: 'Inventory holding cut', value: '18%', progress: 0.86, benchmarkLabel: 'Planning benchmark' },
       { metric: 'Forecast MAPE', value: '4.8%', progress: 0.78, benchmarkLabel: 'Accuracy confidence' },
     ],
-    pitchShort:
-      'ProcureIQ is a Kaggle-based supply-chain intelligence prototype inspired by my Jayanita procurement work. It forecasts demand and price, scores supplier risk with SHAP, and recommends optimized order allocation using PuLP — turning analytics into procurement decisions.',
-    pitchLong:
-      "At Jayanita, procurement was affected by SKU complexity, raw-material price movement, supplier reliability, and inventory constraints. To demonstrate the problem openly, I built ProcureIQ on public Kaggle shipment-pricing data. I cleaned procurement records, engineered delivery-delay, landed-cost, price-volatility, and supplier-performance features, then forecast weekly demand and price using ARIMA, Prophet, and XGBoost with walk-forward validation. I built a supplier risk score combining late-delivery rate, price volatility, freight volatility, and missing-data signals. Finally I converted the forecast into a PuLP MILP that minimizes purchase, holding, stockout, freight, and supplier-risk penalty under MOQ, capacity, and ABC service-level constraints. Output is a recommended order plan plus a Streamlit dashboard. The point isn't only prediction — it's recommending what procurement should actually do.",
     honestyNote:
       'The business logic is inspired by my real supply-chain analytics work at Jayanita Exports. The GitHub implementation uses public Kaggle shipment-pricing data so the code can be shared openly without exposing company data.',
     repoUrl: 'https://github.com/piyush-kumar/procureiq',
@@ -213,10 +209,6 @@ export const projects = [
       { metric: 'Simulation replications', value: '100+', progress: 0.88, benchmarkLabel: 'Stress-test depth' },
       { metric: 'Scenarios stress-tested', value: '6', progress: 0.7, benchmarkLabel: 'Scenario breadth' },
     ],
-    pitchShort:
-      'SOPNet is a network-level S&OP decision engine built on public M5 sales and a synthetic supply network. It forecasts demand hierarchically, reconciles across levels, optimizes production and shipments with MILP, and stress-tests the plan with SimPy simulation.',
-    pitchLong:
-      'SOPNet demonstrates connected S&OP. I take M5 retail sales, aggregate to weekly demand, and build a hierarchy from total network down to store-item level. I train baseline, statistical, and ML forecasting models with walk-forward validation, then reconcile forecasts so total, category, store, and SKU plans stay consistent. I generate a realistic plant–DC–retail network and build a PuLP MILP that decides production quantity, plant allocation, DC inventory, and shipments while respecting capacity, lane, storage, setup, and service-level constraints. Finally, I use SimPy to test the optimized plan under stochastic demand and lead-time. The Streamlit dashboard exposes forecast accuracy, the optimized network plan, service-level risk, and scenario tradeoffs. The whole point is showing that planning is one connected problem, not five separate ones.',
     honestyNote:
       'Independent public-data prototype. Not a paid client project. Uses Kaggle M5 demand data with a synthetic plant–DC–retail network. The OCI deployment is architecture-level, designed to demonstrate readiness rather than a live production deployment.',
     repoUrl: 'https://github.com/piyush-kumar/sopnet',
@@ -234,12 +226,8 @@ export const projectPageCopy = {
   stackLabel: 'Tech stack',
   stackTitle: 'Tools grouped by the role they play.',
   stackDistributionLabel: 'Stack distribution',
-  pitchLabel: 'Interview pitch',
-  pitchTitle: 'The concise version and the deeper walkthrough.',
-  pitchShortTab: '30-second pitch',
-  pitchLongTab: '2-minute pitch',
-  honestyLabel: 'Honest framing note',
-  sectionRail: ['Problem', 'Architecture', 'Modules', 'Impact', 'Tech', 'Pitch'],
+honestyLabel: 'Honest framing note',
+  sectionRail: ['Problem', 'Architecture', 'Modules', 'Impact', 'Tech'],
   repoLabel: 'View repository',
   scrollLabel: 'Scroll to details',
 }

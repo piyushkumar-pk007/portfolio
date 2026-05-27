@@ -72,13 +72,13 @@ function Hero() {
             <motion.p variants={itemVariants} className="mb-4 mt-0 text-sm font-medium uppercase tracking-[0.24em] text-[var(--accent)]">
               {siteCopy.heroRolePrefix} <span className="text-[var(--text-primary)]">{typedRole}</span><span className="type-cursor" />
             </motion.p>
-            <motion.div variants={itemVariants} className="mt-8">
-              <Avatar />
-            </motion.div>
             <motion.h1 variants={itemVariants} className="max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-[var(--text-primary)] sm:text-6xl xl:text-7xl">
               {profile.name}
             </motion.h1>
             <motion.p variants={itemVariants} className="mt-5 max-w-3xl text-xl text-[var(--text-secondary)]">{profile.tagline}</motion.p>
+            <motion.p variants={itemVariants} className="mt-5 max-w-2xl text-2xl font-bold tracking-[-0.02em] text-[var(--text-primary)] md:text-3xl">
+              {siteCopy.heroSlogan}
+            </motion.p>
             {profile.availableForWork ? (
               <motion.div variants={itemVariants} className="mt-4">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400">
@@ -87,12 +87,6 @@ function Hero() {
                 </span>
               </motion.div>
             ) : null}
-            <motion.p variants={itemVariants} className="mt-6 max-w-3xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-              {siteCopy.heroIntro}
-            </motion.p>
-            <motion.p variants={itemVariants} className="mt-4 max-w-3xl text-base leading-relaxed text-[var(--text-muted)] md:text-lg">
-              {profile.summary}
-            </motion.p>
             <motion.div variants={itemVariants} className="mt-10 flex flex-wrap items-center gap-4">
               <ResumeButton large />
               <a
@@ -112,12 +106,10 @@ function Hero() {
               </p>
               <div className="mt-6 flex flex-col items-center text-center">
                 <Avatar sizeClassName="h-24 w-24" />
-                <p className="mt-4 text-lg font-semibold tracking-[-0.02em] text-[var(--text-primary)]">
-                  {profile.name}
-                </p>
+                <p className="mt-3 text-lg font-semibold tracking-[-0.02em] text-[var(--text-primary)]">{profile.name}</p>
                 <p className="mt-1 text-sm text-[var(--text-secondary)]">{profile.title}</p>
               </div>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {profile.heroStats.map((stat, index) => (
                   <div
                     key={stat.label}

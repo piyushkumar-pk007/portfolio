@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import ArchitectureDiagram from '../components/project-detail/ArchitectureDiagram'
 import ImpactStats from '../components/project-detail/ImpactStats'
-import InterviewPitch from '../components/project-detail/InterviewPitch'
 import ModulesAccordion from '../components/project-detail/ModulesAccordion'
 import ProblemStatement from '../components/project-detail/ProblemStatement'
 import ProjectHero from '../components/project-detail/ProjectHero'
@@ -19,7 +18,7 @@ const TechStackGrid = lazy(() => import('../components/project-detail/TechStackG
 
 function ProjectDetail() {
   const { slug } = useParams()
-  const sectionIds = ['project-problem', 'project-architecture', 'project-modules', 'project-impact', 'project-tech', 'project-pitch']
+  const sectionIds = ['project-problem', 'project-architecture', 'project-modules', 'project-impact', 'project-tech']
   const activeSection = useScrollSpy(sectionIds, '-25% 0px -50% 0px')
   const projectIndex = projects.findIndex((item) => item.slug === slug)
 
@@ -75,8 +74,6 @@ function ProjectDetail() {
         >
           <TechStackGrid techStack={project.techStack} sectionId="project-tech" />
         </Suspense>
-        <InterviewPitch pitchShort={project.pitchShort} pitchLong={project.pitchLong} sectionId="project-pitch" />
-
         <aside className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
           <div className="rounded-full border px-3 py-5 backdrop-blur-xl" style={{ borderColor: 'var(--border)', backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}>
             <div className="flex flex-col items-center gap-4">
