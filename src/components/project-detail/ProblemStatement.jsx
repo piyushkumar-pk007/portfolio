@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
+import FadeInSection from '../FadeInSection'
 import { projectPageCopy } from '../../content/projects'
 
-function ProblemStatement({ problem }) {
+function ProblemStatement({ problem, sectionId }) {
   return (
-    <section id="project-problem" className="section-shell">
-      <div className="mx-auto max-w-5xl px-6">
+    <section id={sectionId} className="section-shell">
+      <FadeInSection className="mx-auto max-w-5xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -17,7 +18,7 @@ function ProblemStatement({ problem }) {
             {problem}
           </p>
         </motion.div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }

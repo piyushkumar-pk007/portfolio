@@ -13,11 +13,14 @@ import Footer from '../components/Footer'
 import ThemeToggle from '../components/ThemeToggle'
 import { profile, siteCopy } from '../content/profile'
 import { projectPageCopy, projects } from '../content/projects'
+import { useScrollSpy } from '../hooks/useScrollSpy'
 
 const TechStackGrid = lazy(() => import('../components/project-detail/TechStackGrid'))
 
 function ProjectDetail() {
   const { slug } = useParams()
+  const sectionIds = ['project-problem', 'project-architecture', 'project-modules', 'project-impact', 'project-tech', 'project-pitch']
+  const activeSection = useScrollSpy(sectionIds, '-25% 0px -50% 0px')
   const projectIndex = projects.findIndex((item) => item.slug === slug)
 
   if (projectIndex === -1) {
@@ -54,10 +57,10 @@ function ProjectDetail() {
 
       <main>
         <ProjectHero project={project} />
-        <ProblemStatement problem={project.problem} />
-        <ArchitectureDiagram pipeline={project.pipeline} />
-        <ModulesAccordion modules={project.modules} />
-        <ImpactStats impact={project.impact} />
+        <ProblemStatement problem={project.problem} sectionId="project-problem" />
+        <ArchitectureDiagram pipeline={project.pipeline} sectionId="project-architecture" />
+        <ModulesAccordion modules={project.modules} sectionId="project-modules" />
+        <ImpactStats impact={project.impact} sectionId="project-impact" />
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-6 pb-24">
@@ -65,14 +68,42 @@ function ProjectDetail() {
                 className="rounded-2xl border px-5 py-4 text-sm text-[var(--text-secondary)]"
                 style={{ borderColor: 'var(--border)' }}
               >
-                Loading stack details...
+                {siteCopy.loadingStackLabel}
               </div>
             </div>
           }
         >
-          <TechStackGrid techStack={project.techStack} />
+          <TechStackGrid techStack={project.techStack} sectionId="project-tech" />
         </Suspense>
-        <InterviewPitch pitchShort={project.pitchShort} pitchLong={project.pitchLong} />
+        <InterviewPitch pitchShort={project.pitchShort} pitchLong={project.pitchLong} sectionId="project-pitch" />
+
+        <aside className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 xl:block">
+          <div className="rounded-full border px-3 py-5 backdrop-blur-xl" style={{ borderColor: 'var(--border)', backgroundColor: 'color-mix(in srgb, var(--bg) 80%, transparent)' }}>
+            <div className="flex flex-col items-center gap-4">
+              {sectionIds.map((sectionId, index) => {
+                const isActive = activeSection === sectionId
+                const label = projectPageCopy.sectionRail[index]
+
+                return (
+                  <a
+                    key={sectionId}
+                    href={`#${sectionId}`}
+                    className="group flex items-center gap-3"
+                    aria-label={label}
+                  >
+                    <span className={`text-xs uppercase tracking-[0.18em] text-[var(--text-muted)] transition ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                      {label}
+                    </span>
+                    <span className="relative flex h-4 w-4 items-center justify-center">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-muted)]" />
+                      {isActive ? <span className="absolute h-4 w-4 rounded-full border border-[var(--accent)]" /> : null}
+                    </span>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        </aside>
 
         <section className="pb-24">
           <div className="mx-auto max-w-5xl px-6">

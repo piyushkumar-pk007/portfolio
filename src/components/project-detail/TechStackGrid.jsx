@@ -8,6 +8,7 @@ import {
   YAxis,
 } from 'recharts'
 import Badge from '../Badge'
+import FadeInSection from '../FadeInSection'
 import SectionHeading from '../SectionHeading'
 import { projectPageCopy } from '../../content/projects'
 
@@ -40,7 +41,7 @@ function getGroupedStack(techStack) {
   }, {})
 }
 
-function TechStackGrid({ techStack }) {
+function TechStackGrid({ techStack, sectionId }) {
   const grouped = getGroupedStack(techStack)
   const chartData = Object.entries(grouped).map(([name, tools]) => ({
     name,
@@ -48,8 +49,8 @@ function TechStackGrid({ techStack }) {
   }))
 
   return (
-    <section className="section-shell">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id={sectionId} className="section-shell">
+      <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow={projectPageCopy.stackLabel} title={projectPageCopy.stackTitle} />
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -90,7 +91,7 @@ function TechStackGrid({ techStack }) {
             </div>
           </div>
         </div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }

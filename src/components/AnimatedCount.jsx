@@ -23,7 +23,6 @@ function AnimatedCount({ value, active, duration = 900 }) {
 
   useEffect(() => {
     if (!active || prefersReducedMotion) {
-      setDisplayValue(value)
       return undefined
     }
 
@@ -45,7 +44,7 @@ function AnimatedCount({ value, active, duration = 900 }) {
     return () => window.cancelAnimationFrame(frameId)
   }, [active, duration, prefersReducedMotion, value])
 
-  return <span>{displayValue}</span>
+  return <span>{active || prefersReducedMotion ? displayValue : formatAnimatedValue(value, 0)}</span>
 }
 
 export default AnimatedCount

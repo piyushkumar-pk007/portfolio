@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { LayoutGroup, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion'
 import { navigationLinks, profile } from '../content/profile'
 import { useScrollSpy } from '../hooks/useScrollSpy'
@@ -11,11 +11,7 @@ function Navbar() {
   const sectionIds = navigationLinks.map((link) => link.href.replace('#', ''))
   const activeSection = useScrollSpy(sectionIds)
   const { scrollY } = useScroll()
-  const [isElevated, setIsElevated] = useState(false)
-
-  useEffect(() => {
-    setIsElevated(window.scrollY > 56)
-  }, [])
+  const [isElevated, setIsElevated] = useState(() => (typeof window !== 'undefined' ? window.scrollY > 56 : false))
 
   useMotionValueEvent(scrollY, 'change', (value) => {
     setIsElevated(value > 56)

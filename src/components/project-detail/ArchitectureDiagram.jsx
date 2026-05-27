@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
+import FadeInSection from '../FadeInSection'
 import SectionHeading from '../SectionHeading'
 import { projectPageCopy } from '../../content/projects'
 
@@ -70,19 +72,20 @@ function getTextLines(label) {
   return lines
 }
 
-function ArchitectureDiagram({ pipeline }) {
+function ArchitectureDiagram({ pipeline, sectionId }) {
   const nodes = getNodeLayout(pipeline)
   const svgWidth = Math.max(...nodes.map((node) => node.x + node.width)) + 24
   const svgHeight = Math.max(...nodes.map((node) => node.y + node.height)) + 40
+  const [hoveredNode, setHoveredNode] = useState(null)
 
   return (
-    <section className="section-shell">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id={sectionId} className="section-shell">
+      <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow={projectPageCopy.architectureLabel}
           title={projectPageCopy.architectureTitle}
         />
-        <div className="surface-card overflow-hidden p-4 md:p-8">
+        <div className="surface-card relative overflow-hidden p-4 md:p-8">
           <svg
             viewBox={`0 0 ${svgWidth} ${svgHeight}`}
             className="h-auto w-full"
@@ -114,6 +117,9 @@ function ArchitectureDiagram({ pipeline }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.35, delay: index * 0.08 }}
+                  onMouseEnter={() => setHoveredNode(node)}
+                  onMouseLeave={() => setHoveredNode(null)}
+                  className="cursor-default"
                 >
                   <rect
                     x={node.x}
@@ -124,6 +130,21 @@ function ArchitectureDiagram({ pipeline }) {
                     fill={style.fill}
                     opacity="0.92"
                   />
+                  {hoveredNode?.stage === node.stage ? (
+                    <motion.rect
+                      x={node.x - 6}
+                      y={node.y - 6}
+                      rx="24"
+                      width={node.width + 12}
+                      height={node.height + 12}
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="2"
+                      initial={{ opacity: 0.2, scale: 0.96 }}
+                      animate={{ opacity: [0.25, 0.55, 0.25], scale: [0.98, 1.02, 0.98] }}
+                      transition={{ duration: 1.1, repeat: Infinity }}
+                    />
+                  ) : null}
                   <text
                     x={node.x + node.width / 2}
                     y={node.y + node.height / 2 - (lines.length - 1) * 9}
@@ -143,8 +164,22 @@ function ArchitectureDiagram({ pipeline }) {
               )
             })}
           </svg>
+          {hoveredNode ? (
+            <div
+              className="pointer-events-none absolute max-w-xs rounded-2xl border px-4 py-3 text-sm leading-relaxed text-[var(--text-secondary)] shadow-soft"
+              style={{
+                borderColor: 'var(--border)',
+                backgroundColor: 'color-mix(in srgb, var(--bg-elevated) 92%, transparent)',
+                left: `${((hoveredNode.x + hoveredNode.width / 2) / svgWidth) * 100}%`,
+                top: `${((hoveredNode.y + hoveredNode.height + 28) / svgHeight) * 100}%`,
+                transform: 'translateX(-50%)',
+              }}
+            >
+              {hoveredNode.detail}
+            </div>
+          ) : null}
         </div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }

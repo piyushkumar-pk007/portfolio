@@ -4,12 +4,11 @@ import { useReducedMotion } from 'framer-motion'
 export function useTypewriter(words, typingSpeed = 85, pauseMs = 1400) {
   const prefersReducedMotion = useReducedMotion()
   const [wordIndex, setWordIndex] = useState(0)
-  const [displayText, setDisplayText] = useState(prefersReducedMotion ? words[0] ?? '' : '')
+  const [displayText, setDisplayText] = useState(() => (prefersReducedMotion ? words[0] ?? '' : ''))
   const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
     if (prefersReducedMotion || !words.length) {
-      setDisplayText(words[0] ?? '')
       return undefined
     }
 
@@ -22,9 +21,11 @@ export function useTypewriter(words, typingSpeed = 85, pauseMs = 1400) {
     }
 
     if (isDeleting && displayText === '') {
-      setIsDeleting(false)
-      setWordIndex((index) => (index + 1) % words.length)
-      return undefined
+      timeoutId = window.setTimeout(() => {
+        setIsDeleting(false)
+        setWordIndex((index) => (index + 1) % words.length)
+      }, 0)
+      return () => window.clearTimeout(timeoutId)
     }
 
     timeoutId = window.setTimeout(() => {
@@ -40,5 +41,5 @@ export function useTypewriter(words, typingSpeed = 85, pauseMs = 1400) {
     return () => window.clearTimeout(timeoutId)
   }, [displayText, isDeleting, pauseMs, prefersReducedMotion, typingSpeed, wordIndex, words])
 
-  return displayText
+  return prefersReducedMotion ? words[0] ?? '' : displayText
 }

@@ -2,6 +2,7 @@ import { Award, BadgeCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { achievements } from '../content/achievements'
 import { siteCopy } from '../content/profile'
+import FadeInSection from './FadeInSection'
 import SectionHeading from './SectionHeading'
 
 const groups = [
@@ -12,7 +13,7 @@ const groups = [
 function Achievements() {
   return (
     <section id="achievements" className="section-shell">
-      <div className="mx-auto max-w-6xl px-6">
+      <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow={siteCopy.achievementsHeading} title={siteCopy.achievementsTitle} />
         <div className="grid gap-6 lg:grid-cols-2">
           {groups.map((group, index) => {
@@ -46,7 +47,7 @@ function Achievements() {
             )
           })}
         </div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }

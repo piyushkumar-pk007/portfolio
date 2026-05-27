@@ -1,6 +1,7 @@
 import { FolderGit2, Link2, Mail, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { profile, siteCopy } from '../content/profile'
+import FadeInSection from './FadeInSection'
 import SectionHeading from './SectionHeading'
 
 const contactMethods = [
@@ -13,7 +14,7 @@ const contactMethods = [
 function Contact() {
   return (
     <section id="contact" className="section-shell">
-      <div className="mx-auto max-w-6xl px-6">
+      <FadeInSection className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow={siteCopy.contactHeading}
           title={siteCopy.contactTitle}
@@ -46,7 +47,7 @@ function Contact() {
             })}
           </div>
         </motion.div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }

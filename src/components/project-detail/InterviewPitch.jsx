@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import FadeInSection from '../FadeInSection'
 import SectionHeading from '../SectionHeading'
 import { projectPageCopy } from '../../content/projects'
 
-function InterviewPitch({ pitchShort, pitchLong }) {
+function InterviewPitch({ pitchShort, pitchLong, sectionId }) {
   const [activeTab, setActiveTab] = useState('short')
 
   const tabs = [
@@ -14,8 +15,8 @@ function InterviewPitch({ pitchShort, pitchLong }) {
   const activeContent = tabs.find((tab) => tab.id === activeTab)
 
   return (
-    <section className="section-shell">
-      <div className="mx-auto max-w-5xl px-6">
+    <section id={sectionId} className="section-shell">
+      <FadeInSection className="mx-auto max-w-5xl px-6">
         <SectionHeading eyebrow={projectPageCopy.pitchLabel} title={projectPageCopy.pitchTitle} />
         <div className="surface-card p-6 md:p-8">
           <div className="flex flex-wrap gap-3">
@@ -50,7 +51,7 @@ function InterviewPitch({ pitchShort, pitchLong }) {
             </AnimatePresence>
           </div>
         </div>
-      </div>
+      </FadeInSection>
     </section>
   )
 }
